@@ -1,0 +1,21 @@
+tell application "Google Chrome"
+	make new window
+	open location "https://knittingrecipes.com"
+	# wait until the page is loaded
+	repeat while loading of active tab of window 1
+		delay 1
+	end repeat
+	# start VoiceOver
+	tell application "System Events" to key code 96 using command down
+	# wait for VO to start
+	# repeat until application "VoiceOver" is running
+	#	delay 1
+	# end repeat
+	delay 10
+	tell application "VoiceOver"
+		repeat while text under cursor is not "Let's go!"
+			press tab
+		end repeat
+		click
+	end tell
+end tell
